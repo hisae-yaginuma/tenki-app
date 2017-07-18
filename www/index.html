@@ -1,35 +1,36 @@
 <!DOCTYPE HTML>
-<html ng-app="myApp">
+<html
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="components/loader.js"></script>
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="css/style.css">
-  
+
   <script>var module = ons.bootstrap();</script>
   <script src="js/weather.js"></script>
- 
+
 </head>
 <body ng-controller="AppController">
   <ons-page>
     <ons-toolbar class="toolbar">
       <div class="center">
-        <img class="sun" src="img/TheSun.svg" alt="" /> 
+        <img class="sun" src="img/TheSun.svg" alt="" />
 <p class="bar-text">3時間ごとの天気</p>
       </div>
     </ons-toolbar>
     <div class="wrapper">
 <form class="form">
-  <button id="style1" ng-model="bBlank" />
+  <button id="style1" ng-click="bgClass='blank'" />
     ver1</button>
-  <label class="label"><input id="style2" type="checkbox" ng-model="bFrame" />
-    ver2</label>
-  <label class="label"><input id="style3" type="checkbox" ng-model="bBackcolor" />
-    ver3</label>
+  <button id="style2" ng-click="bgClass='frame'" />
+    ver2</button>
+  <button id="style3" ng-click="bgClass='backcolor'" />
+    ver3</button>
+
 </form>
 
-<div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+  <div ng-class="bgClass" class="box">
             <div class="date">
               {{date}}
             </div>
@@ -41,13 +42,13 @@
             </div>
             <div class="description">
                 {{description}}
-            </div> 
+            </div>
 
             <div class="temp">
               最低{{temp_min}}℃　最高{{temp_max}}℃
             </div>
         </div>
-        <div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+        <div ng-class="bgClass"  class="box">
         <div class="date">
               {{date2}}
             </div>
@@ -60,13 +61,13 @@
             </div>
             <div class="description">
                 {{description2}}
-            </div> 
+            </div>
 
             <div class="temp">
               最低{{temp_min2}}℃　最高{{temp_max2}}℃
             </div>
         </div>
-        <div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+        <div ng-class="bgClass"  class="box">
             <div class="date">
               {{date3}}
             </div>
@@ -79,7 +80,7 @@
             </div>
             <div class="description">
                 {{description3}}
-            </div> 
+            </div>
 
             <div class="temp">
               最低{{temp_min3}}℃　最高{{temp_max3}}℃
