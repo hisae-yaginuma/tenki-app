@@ -1,0 +1,90 @@
+.page__background{
+    background-color: #aaa;
+}
+.wrapper {
+    font-family: "メイリオ", sans-serif;
+    margin: 30px 10px;
+    text-align: center;
+  }
+  .sun{
+      height: 40px;
+      width: 40px;
+      float: left;
+      margin-right: 5px; 
+  }
+.bar-text{
+    padding: 0;
+    margin: 0;
+}
+  .description {
+    
+    margin-bottom: 5px;
+  }
+ 
+.icon{
+     height: 80px;
+     width: 80px;
+     display: block;
+     margin: 0 auto;
+ }
+
+
+
+ .navigation-bar{
+     height: 60px;
+     
+ }
+ .center{
+     text-align: left;
+     margin: 10px 10px 10px 10px;
+     font-family: "メイリオ", sans-serif;
+ }
+ .temp{
+     display: inline;
+ }
+ .description{
+     font-size: .8rem;
+ }
+ .box{
+    margin: 10px 0px;
+    padding: 10px;
+     background-color: #fff;
+     border-radius: 10px;
+ }
+ .time{
+     font-size: 1.3rem;
+ }
+ .prop{
+     margin: 10px 0px ;
+     display: inline;
+ }
+ 
+ .date{
+    font-size: 1rem;
+  }
+.blank {
+  background-color: #f8f;
+  color: green;
+}
+.frame {
+  background-color: #ff9;
+  color: blue;
+}
+.backcolor {
+  background-color: #000;
+  color: aqua;
+  
+}
+.label{
+    margin: 10px 5px;
+    font-size: 1rem;
+}
+.form{
+    width: 300px;
+    height: 50px;
+    }
+.ng-valid{
+    border-radius: 5px;
+     background-color: #fff;
+    border-radius: 10px;
+}

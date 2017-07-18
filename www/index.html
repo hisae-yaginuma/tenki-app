@@ -1,71 +1,90 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="myApp">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="components/loader.js"></script>
-    <link rel="stylesheet" href="components/loader.css">
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .weather {
-            text-align: center;
-            font-size: 40px;
-            margin-top: 100px;
-        }
-        .description {
-            font-size: 20px;
-        }
-    </style>
-    <script>
-
-        function getWeather() {
-            var module = ons.bootstrap();
-            ons.disableAutoStatusBarFill();  // (Monaca enables StatusBar plugin by default)
-            module.controller('AppController', function($scope, $http) {
-                var config = {
-                  params: {q:'tokyo',APPID:'95e785a97a4faf710cde87caca73c656'}
-                }
-                $http.get('https://api.wadap.jp/weather/forecast', config)
-                    .success(function(data) {
-                        $scope.weather = data.list[0].weather[0].main;
-                        $scope.description = data.list[0].weather[0].description;
-                        $scope.icon = data.list[0].weather[0].icon;
-                        
-                    })
-                    .error(function() {
-                        alert('天気情報の取得に失敗しました');
-                    });
-            });                        
-        }
-                
-        navigator.geolocation.getCurrentPosition(
-            function(position) {
-                var data = position.coords ;
-        		var lat = data.latitude ;
-    			var lng = data.longitude ;
-    			var alt = data.altitude ;
-    			var accLatlng = data.accuracy ;
-    			var accAlt = data.altitudeAccuracy ;
-    			var heading = data.heading ;			//0=北,90=東,180=南,270=西
-    			var speed = data.speed ;                            
-        });
-        
-                getWeather();
-        
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="components/loader.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script>var module = ons.bootstrap();</script>
+  <script src="js/weather.js"></script>
+ 
 </head>
-<body>
-     <ons-page ng-controller="AppController">
-        <ons-toolbar>
-            <div class="center">現在の天気</div>
-        </ons-toolbar>
-        <div class="weather">
-            <img ng-src="http://openweathermap.org/img/w/{{icon}}.png">
-            <br>
-            {{weather}}
-            <div class="description">{{description}}</div>
-          </div>
-          
-    </ons-page>
+<body ng-controller="AppController">
+  <ons-page>
+    <ons-toolbar class="toolbar">
+      <div class="center">
+        <img class="sun" src="img/TheSun.svg" alt="" /> 
+<p class="bar-text">3時間ごとの天気</p>
+      </div>
+    </ons-toolbar>
+    <div class="wrapper">
+<form class="form">
+  <button id="style1" ng-model="bBlank" />
+    ver1</button>
+  <label class="label"><input id="style2" type="checkbox" ng-model="bFrame" />
+    ver2</label>
+  <label class="label"><input id="style3" type="checkbox" ng-model="bBackcolor" />
+    ver3</label>
+</form>
+
+<div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+            <div class="date">
+              {{date}}
+            </div>
+            <div class="time">
+              {{time}}
+            </div>
+            <div class="icon">
+                <img class="icon" ng-src="http://openweathermap.org/img/w/{{icon}}.png">
+            </div>
+            <div class="description">
+                {{description}}
+            </div> 
+
+            <div class="temp">
+              最低{{temp_min}}℃　最高{{temp_max}}℃
+            </div>
+        </div>
+        <div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+        <div class="date">
+              {{date2}}
+            </div>
+            <div class="time">
+              {{time2}}
+            </div>
+
+            <div class="icon">
+                <img class="icon" ng-src="http://openweathermap.org/img/w/{{icon2}}.png">
+            </div>
+            <div class="description">
+                {{description2}}
+            </div> 
+
+            <div class="temp">
+              最低{{temp_min2}}℃　最高{{temp_max2}}℃
+            </div>
+        </div>
+        <div ng-class="{ blank: bBlank, frame: bFrame, backcolor: bBackcolor}" class="box">
+            <div class="date">
+              {{date3}}
+            </div>
+            <div class="time">
+              {{time3}}
+            </div>
+
+            <div class="icon">
+                <img class="icon" ng-src="http://openweathermap.org/img/w/{{icon3}}.png">
+            </div>
+            <div class="description">
+                {{description3}}
+            </div> 
+
+            <div class="temp">
+              最低{{temp_min3}}℃　最高{{temp_max3}}℃
+            </div>
+    </div>
+  </ons-page>
 </body>
 </html>
