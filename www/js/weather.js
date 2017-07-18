@@ -18,16 +18,14 @@
         
         $http.get("https://api.wadap.jp/weather/forecast", config)
         .success(function(data) {
-          // $scope.weather = data.list[0].weather[0].main;
+            
+          function tosessi(temp){
+              return Math.round(temp - 273.15) ;
+          }
+
           $scope.description = data.list[0].weather[0].description;
           $scope.icon = data.list[0].weather[0].icon;
-          $scope.temp_min = Math.round(data.list[0].main.temp_min) - 273;
-          $scope.temp_max = Math.round(data.list[0].main.temp_max) - 273;
- 
 
-          //
-          
-          
           
           function toJST(timestamp) {
               var weeks = new Array('日', '月', '火', '水', '木', '金', '土');
@@ -45,12 +43,14 @@
           var result = toJST(data.list[0].dt);
           $scope.date = result.date;
           $scope.time = result.time;
+          $scope.temp_min = tosessi(data.list[0].main.temp_min);
+          $scope.temp_max = tosessi(data.list[0].main.temp_max);
           
           // $scope.weather2 = data.list[1].weather[0].main;
           $scope.description2 = data.list[1].weather[0].description;
           $scope.icon2 = data.list[1].weather[0].icon;
-          $scope.temp_min2 = Math.round(data.list[1].main.temp_min) - 273;
-          $scope.temp_max2 = Math.round(data.list[1].main.temp_max) - 273;
+          $scope.temp_min2 = tosessi(data.list[1].main.temp_min);
+          $scope.temp_max2 = tosessi(data.list[1].main.temp_max);
 
          
          
@@ -62,8 +62,8 @@
           // $scope.weather3 = data.list[2].weather[0].main;
           $scope.description3 = data.list[2].weather[0].description;
           $scope.icon3 = data.list[2].weather[0].icon;
-          $scope.temp_min3 = Math.round(data.list[2].main.temp_min) - 273;
-          $scope.temp_max3 = Math.round(data.list[2].main.temp_max) - 273;
+          $scope.temp_min3 = tosessi(data.list[2].main.temp_min);
+          $scope.temp_max3 = tosessi(data.list[2].main.temp_max);
          
           var result = toJST(data.list[2].dt);
           $scope.date3 = result.date;
